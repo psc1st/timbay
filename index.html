@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trái Tim Bay - Thanh Mai</title>
+    <title>Trái Tim & Hoa Hồng Bay - Thanh Mai</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background-color: black;
         }
-        .heart {
+        .floating {
             position: absolute;
-            color: red;
             font-size: 2rem;
-            animation: fly 3s linear infinite;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.8);
+            animation: fly 5s linear infinite;
         }
         @keyframes fly {
             0% { transform: translateY(0) scale(1); opacity: 1; }
@@ -24,23 +26,25 @@
 </head>
 <body>
     <script>
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️ Thanh Mai ❤️";
-            document.body.appendChild(heart);
+        function createFloatingElement() {
+            const elements = ["❤️", "💖", "💘", "🌹", "💞", "💕"];
+            const floating = document.createElement("div");
+            floating.classList.add("floating");
+            floating.innerHTML = elements[Math.floor(Math.random() * elements.length)] + " Thanh Mai " + elements[Math.floor(Math.random() * elements.length)];
+            document.body.appendChild(floating);
 
             const left = Math.random() * 100;
-            heart.style.left = left + "vw";
-            heart.style.top = "100vh";
-            heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+            floating.style.left = left + "vw";
+            floating.style.top = "100vh";
+            floating.style.animationDuration = (Math.random() * 2 + 4) + "s";
 
             setTimeout(() => {
-                heart.remove();
-            }, 3000);
+                floating.remove();
+            }, 5000);
         }
 
-        setInterval(createHeart, 300);
+        setInterval(createFloatingElement, 300);
     </script>
 </body>
 </html>
+
